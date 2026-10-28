@@ -16,7 +16,12 @@ test('de consultar um pedido aprovado', async ({ page }) => {
   await page.getByRole('button', { name: 'Buscar Pedido' }).click();
 
   // Assert
-  await expect(page.getByText('VLO-EYECJI')).toBeVisible({timeout: 10_000});
+  const containerPedido = page.getByRole('paragraph')
+  .filter({ hasText: /^Pedido$/ })
+  .locator('..') //Sobe para o elemento pai (a div agrupa ambos)
+
+  await expect(containerPedido).toContainText('VLO-EYECJI', {timeout: 10_000});
+
   await expect(page.getByText('APROVADO')).toBeVisible();
   
 });
