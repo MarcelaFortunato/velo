@@ -182,7 +182,7 @@ test.describe('Consulta de Pedido', () => {
       - paragraph: /R\\$ \\d+\\.\\d+,\\d+/
       `);
 
-    const statusBadge = page.getByRole('status').filter({ hasText: 'REPROVADO' });
+    const statusBadge = page.getByRole('status').filter({ hasText: 'EM_ANALISE' });
 
     await expect(statusBadge).toHaveClass(/bg-amber-100/);
     await expect(statusBadge).toHaveClass(/text-amber-700/);
